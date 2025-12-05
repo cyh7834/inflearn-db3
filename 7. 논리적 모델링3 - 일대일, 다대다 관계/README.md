@@ -12,3 +12,29 @@
 ## 2. 1:1 관계를 DB에서 강제하는 방법
 - **FK + UNIQUE 제약조건** 조합으로만 보장 가능.
 - 예: `member_detail.member_id` 에 `UNIQUE` 추가.
+
+## 3. FK 위치에 따른 두 가지 설계 방식
+
+### A. 보조 테이블에 FK (권장)
+```
+member (member_id PK)
+member_detail (detail_id PK, member_id FK UNIQUE)
+```
+- 장점:
+  - 확장성 우수 (1:1 → 1:N 전환 시 UNIQUE 제거만 하면 됨)
+  - 선택적 관계(옵셔널) 표현 쉬움
+  - 테이블 간 책임 분리 용이
+- 단점:
+  - 상세정보 존재 여부 확인 시 JOIN 필요
+
+### B. 주 테이블에 FK
+```
+member (detail_id FK)
+member_detail (detail_id PK)
+```
+- 장점: JOIN 없이 상세정보 존재 여부 확인 가능
+- 단점:
+  - 확장성 매우 낮음
+  - NULL FK 증가
+  - 구조 변경 비용 큼
+  - 실무에서는 거의 사용되지 않음
