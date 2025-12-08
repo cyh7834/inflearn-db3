@@ -49,3 +49,16 @@ member_detail (detail_id PK)
   - FK는 단일 값만 저장 가능
   - PK 중복 불가
   - 컬럼 값은 원자값(Atomic)이어야 함
+
+## 6. 연결 테이블(Junction Table)로 해결
+M:N 관계는 반드시 1:N + N:1 구조로 해소.
+
+예:
+```
+orders (1) — (N) order_item (N) — (1) product
+```
+
+연결 테이블 특징:
+- 두 테이블의 PK를 각각 FK로 가짐
+- (order_id, product_id) UNIQUE 구성 가능
+- **대리키(PK) 추가하는 방식이 현대적 표준**
