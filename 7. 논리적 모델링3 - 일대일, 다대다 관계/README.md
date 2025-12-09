@@ -62,3 +62,22 @@ orders (1) — (N) order_item (N) — (1) product
 - 두 테이블의 PK를 각각 FK로 가짐
 - (order_id, product_id) UNIQUE 구성 가능
 - **대리키(PK) 추가하는 방식이 현대적 표준**
+
+## 7. 관계에 존재하는 속성 — 연관 엔티티
+많은 M:N 관계에는 **관계 자체의 속성**이 존재함.
+
+예:
+- 주문 수량(order_quantity)
+- 주문 당시 가격(order_price)
+- 좋아요 누른 시간(liked_at)
+- 학생의 수강 성적(grade)
+
+→ 이런 속성은 양쪽 엔티티 어디에도 속하지 않음  
+→ 반드시 **연관 엔티티(Associative Entity)** 필요
+
+연관 엔티티 명칭 예시:
+- order_item
+- order_detail
+- enrollment
+- user_role
+- product_tag
