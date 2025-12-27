@@ -29,7 +29,7 @@
   - `product_id`에만 종속되는 컬럼들은 `product` 테이블로.
   - `(order_id, product_id)` 전체에 종속되는 컬럼들은 `order_item` 테이블로.
 
-  ### 제3 정규형 (3NF)
+### 제3 정규형 (3NF)
 
 - **정의**: 2NF를 만족하고, 이행적 함수 종속(Transitive Functional Dependency)이 없어야 함.
   - **이행적 함수 종속**: 기본 키가 아닌 컬럼이 다른 컬럼을 결정하는 관계(PK → 일반컬럼1 → 일반컬럼2). 데이터 중복 및 이상 현상 야기.
